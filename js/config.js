@@ -24,7 +24,7 @@ const CONFIG = {
   REFRESH_MINUTES: 5,
 
   // Calendar display window (24hr). Adjust to match your club's hours.
-  CALENDAR_START_HOUR: 16,
+  CALENDAR_START_HOUR: 15,
   CALENDAR_END_HOUR: 21,
 
   // Once spaces left drops to this number or below, the calendar switches
