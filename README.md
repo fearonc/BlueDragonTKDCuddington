@@ -1,4 +1,4 @@
-# Blue Dragon TaeKwon-Do — Booking Site
+# Blue Dragon TaeKwon-Do (Cuddington Primary Class) — Booking Site
 
 A two-page, no-backend booking site for GitHub Pages:
 
