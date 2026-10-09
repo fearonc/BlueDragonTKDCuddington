@@ -11,7 +11,7 @@ const CONFIG = {
   // Columns must be, in this exact order:
   // 1) Age Range   2) Weekday   3) Start Time (HH:MM, 24hr)
   // 4) End Time (HH:MM, 24hr)   5) Max Capacity   6) Current Signups
-  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSZdyA16mmB5_rhQkRWTSX3xc2rGZsLU4CCtGMdQVcY2PokcN0kN_Emi1CcAGwjDdc-9o4uLLm8ujbU/pub?gid=1107259915&single=true&output=csv",
+  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSZdyA16mmB5_rhQkRWTSX3xc2rGZsLU4CCtGMdQVcY2PokcN0kN_Emi1CcAGwjDdc-9o4uLLm8ujbU/pub?gid=1323561339&single=true&output=csv",
 
   // EmailJS credentials (from emailjs.com — Account > General, and
   // Email Services / Email Templates in your EmailJS dashboard).
@@ -38,6 +38,7 @@ const CONFIG = {
   // found in the spreadsheet but NOT listed here gets added alphabetically
   // at the end. Edit this list any time your class names change.
   AGE_GROUP_ORDER: [
+    "Cuddington After School Club",
     "Mini Dragons (Ages 2-4)",
     "Mini Dragons (Ages 4-6)",
     "Home Ed Mini Dragons (Ages 4-6)",
