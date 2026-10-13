@@ -93,6 +93,20 @@ The site re-checks the link every 5 minutes (configurable via
 
      Note: {{note}}
      ```
+   - **After School Club:** classes whose name contains "after school"
+     (set by `AFTER_SCHOOL_MATCH` in `config.js`) show an extended form. Add
+     this line to the template to receive the extra details (it renders
+     blank for normal classes):
+
+     ```
+     {{afterschool_details}}
+     ```
+
+     Individual variables are also sent if you prefer to lay them out
+     yourself: `year_group`, `teacher`, `collection_arrangement`,
+     `medical_needs`, `participant_dob`, `form_type`. For this class,
+     `participant_name` holds the child's name and `booker_name` the
+     parent's name.
    - The two `*_preferred` variables render as `(Preferred)` when the
      corresponding checkbox is selected, and otherwise render nothing.
    - Set the **To email** field to your own booking inbox address.

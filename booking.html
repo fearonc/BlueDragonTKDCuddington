@@ -67,15 +67,23 @@
 
     <form id="signupForm">
       <div class="form-row">
-        <label for="yourName">Your name</label>
+        <label for="yourName" id="yourNameLabel">Your name</label>
         <input type="text" id="yourName" required>
       </div>
       <div class="form-row">
-        <label for="participantName">Participant's name</label>
+        <label for="participantName" id="participantNameLabel">Participant's name</label>
         <input type="text" id="participantName" required>
       </div>
+      <div class="form-row afterschool-only" hidden>
+        <label for="yearGroup">Year group</label>
+        <input type="text" id="yearGroup" disabled required>
+      </div>
+      <div class="form-row afterschool-only" hidden>
+        <label for="teacherName">Teacher</label>
+        <input type="text" id="teacherName" disabled required>
+      </div>
 <div class="form-row">
-  <label>Participant's date of birth</label>
+  <label id="dobLabel">Participant's date of birth</label>
 
   <div class="dob-row">
    <input
@@ -106,9 +114,18 @@
 >
   </div>
 </div>
-      
+
+      <div class="form-row afterschool-only" hidden>
+        <label for="collectionArrangement">Collection arrangement after club</label>
+        <textarea id="collectionArrangement" placeholder="Collection by father. Name: John Smith" disabled required></textarea>
+      </div>
+      <div class="form-row afterschool-only" hidden>
+        <label for="medicalNeeds">Medical conditions / sensory needs</label>
+        <textarea id="medicalNeeds" placeholder="Please write &quot;None&quot; if not applicable" disabled required></textarea>
+      </div>
+
       <div class="form-row">
-        <label for="contactNumber">Contact number</label>
+        <label for="contactNumber" id="contactNumberLabel">Contact number</label>
         <div class="contact-input-row">
           <input type="tel" id="contactNumber" required>
           <label class="preferred-contact-label" for="contactNumberPreferred">
@@ -118,7 +135,7 @@
         </div>
       </div>
       <div class="form-row">
-        <label for="emailAddress">Email address</label>
+        <label for="emailAddress" id="emailAddressLabel">Email address</label>
         <div class="contact-input-row">
           <input type="email" id="emailAddress" required>
           <label class="preferred-contact-label" for="emailAddressPreferred">
