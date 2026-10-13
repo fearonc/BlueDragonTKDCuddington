@@ -310,7 +310,7 @@ function isAfterSchool(cls) {
 }
 
 // Switches the shared modal between the standard form and the
-// After School Club form (extra fields + "child"/"parent" wording).
+// After School Club form (extra fields + "child"/"" wording).
 function applyFormMode(afterSchool) {
   document.querySelectorAll(".afterschool-only").forEach(row => {
     row.hidden = !afterSchool;
@@ -320,7 +320,7 @@ function applyFormMode(afterSchool) {
 
   const text = (id, value) => { document.getElementById(id).textContent = value; };
   text("yourNameLabel", afterSchool ? "Parent/Carer's name" : "Your name");
-  text("participantNameLabel", afterSchool ? "Child's name" : "Participant's name");
+  text("participantNameLabel", afterSchool ? "Child's full name" : "Participant's name");
   text("dobLabel", afterSchool ? "Child's date of birth" : "Participant's date of birth");
   text("contactNumberLabel", afterSchool ? "Parent/Carer's contact number" : "Contact number");
   text("emailAddressLabel", afterSchool ? "Parent/Carer's email address" : "Email address");
