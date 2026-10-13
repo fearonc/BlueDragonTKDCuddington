@@ -531,6 +531,12 @@ textarea:focus-visible {
   outline: none;
 }
 .form-row textarea { resize: vertical; min-height: 70px; }
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color: #9AA5A0;
+  opacity: 1;
+}
+.form-row[hidden] { display: none; }
 .dob-row {
   display: flex;
   gap: 10px;
