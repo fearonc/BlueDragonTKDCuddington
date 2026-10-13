@@ -304,9 +304,32 @@ if (dobDay && dobMonth && dobYear) {
   form.addEventListener("submit", handleSubmit);
 }
 
+function isAfterSchool(cls) {
+  const match = (CONFIG.AFTER_SCHOOL_MATCH || "after school").toLowerCase();
+  return !!cls && cls.ageRange.toLowerCase().includes(match);
+}
+
+// Switches the shared modal between the standard form and the
+// After School Club form (extra fields + "child"/"parent" wording).
+function applyFormMode(afterSchool) {
+  document.querySelectorAll(".afterschool-only").forEach(row => {
+    row.hidden = !afterSchool;
+    // Disabled fields are skipped by browser validation and by us on submit.
+    row.querySelectorAll("input, textarea").forEach(el => { el.disabled = !afterSchool; });
+  });
+
+  const text = (id, value) => { document.getElementById(id).textContent = value; };
+  text("yourNameLabel", afterSchool ? "Parent's name" : "Your name");
+  text("participantNameLabel", afterSchool ? "Child's name" : "Participant's name");
+  text("dobLabel", afterSchool ? "Child's date of birth" : "Participant's date of birth");
+  text("contactNumberLabel", afterSchool ? "Parent's contact number" : "Contact number");
+  text("emailAddressLabel", afterSchool ? "Parent's email address" : "Email address");
+}
+
 function openModal(cls) {
   selectedClass = cls;
   const isFull = cls.spacesLeft <= 0;
+  const afterSchool = isAfterSchool(cls);
 
   document.getElementById("modalTitle").textContent = `${cls.ageRange} — ${cls.weekday}`;
 
@@ -322,6 +345,7 @@ function openModal(cls) {
   document.getElementById("modalWaitlistNotice").style.display = isFull ? "block" : "none";
 
   document.getElementById("signupForm").reset();
+  applyFormMode(afterSchool);
   document.getElementById("formMsg").textContent = "";
   document.getElementById("formMsg").className = "form-msg";
   document.getElementById("submitBtn").disabled = false;
@@ -345,6 +369,8 @@ function handleSubmit(e) {
   const submitBtn = document.getElementById("submitBtn");
   const msgEl = document.getElementById("formMsg");
   const isFull = selectedClass.spacesLeft <= 0;
+  const afterSchool = isAfterSchool(selectedClass);
+  const val = (id) => document.getElementById(id).value.trim();
 
   const params = {
     subject: isFull ? "New Waiting List Request" : "New Class Sign Up",
@@ -360,6 +386,19 @@ function handleSubmit(e) {
     email_address: document.getElementById("emailAddress").value.trim(),
     email_address_preferred: document.getElementById("emailAddressPreferred").checked ? "(Preferred)" : "",
     note: document.getElementById("note").value.trim() || "—",
+    // After School Club extras ("—" for standard classes)
+    form_type: afterSchool ? "After School Club" : "Standard class",
+    year_group: afterSchool ? val("yearGroup") : "—",
+    teacher: afterSchool ? val("teacherName") : "—",
+    collection_arrangement: afterSchool ? val("collectionArrangement") : "—",
+    medical_needs: afterSchool ? val("medicalNeeds") : "—",
+    // Handy single block for the email template: empty for standard classes
+    afterschool_details: afterSchool
+      ? `Year group: ${val("yearGroup")}\n` +
+        `Teacher: ${val("teacherName")}\n` +
+        `Collection arrangement: ${val("collectionArrangement")}\n` +
+        `Medical conditions / sensory needs: ${val("medicalNeeds")}`
+      : "",
     class_age_range: selectedClass.ageRange,
     class_day: selectedClass.weekday,
     class_time: `${formatTime(selectedClass.startTime)}–${formatTime(selectedClass.endTime)}`,

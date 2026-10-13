@@ -23,6 +23,11 @@ const CONFIG = {
   // for updated availability while someone has the page open.
   REFRESH_MINUTES: 5,
 
+  // Any class whose age-range name contains this text (case-insensitive)
+  // gets the extended "After School Club" sign-up form instead of the
+  // standard one.
+  AFTER_SCHOOL_MATCH: "after school",
+
   // Calendar display window (24hr). Adjust to match your club's hours.
   CALENDAR_START_HOUR: 15,
   CALENDAR_END_HOUR: 21,
