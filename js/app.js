@@ -319,11 +319,11 @@ function applyFormMode(afterSchool) {
   });
 
   const text = (id, value) => { document.getElementById(id).textContent = value; };
-  text("yourNameLabel", afterSchool ? "Parent's name" : "Your name");
+  text("yourNameLabel", afterSchool ? "Parent/carer's name" : "Your name");
   text("participantNameLabel", afterSchool ? "Child's name" : "Participant's name");
   text("dobLabel", afterSchool ? "Child's date of birth" : "Participant's date of birth");
-  text("contactNumberLabel", afterSchool ? "Parent's contact number" : "Contact number");
-  text("emailAddressLabel", afterSchool ? "Parent's email address" : "Email address");
+  text("contactNumberLabel", afterSchool ? "Parent/carer's contact number" : "Contact number");
+  text("emailAddressLabel", afterSchool ? "Parent/carer's email address" : "Email address");
 }
 
 function openModal(cls) {
